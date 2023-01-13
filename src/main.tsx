@@ -4,6 +4,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './screens/Home/Home'
 import SpotifyIndex from './screens/SpotifyIndex/SpotifyIndex'
+import { loader as SpotifyIndexLoader } from './screens/SpotifyIndex/SpotifyIndexLoader'
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
   {
     path: '/index',
     element: <SpotifyIndex />,
+    loader: SpotifyIndexLoader
   }
 ])
 
