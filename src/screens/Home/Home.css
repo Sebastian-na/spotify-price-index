@@ -1,0 +1,27 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    background-color: #131313;
+    padding: 0 1em;
+}
+
+.container img {
+    width: clamp(200px, 50%, 450px);
+}
+
+.container h1 {
+    color: #efefef;
+    font-size: clamp(2rem, 7vw, 5rem);
+    font-weight: bold;
+}
+
+.container h2 {
+    color: #dddddd;
+    font-size: clamp(1rem, 4vw, 1.875rem);
+    font-weight: 400;
+    text-align: center;
+}
