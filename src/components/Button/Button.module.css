@@ -1,10 +1,10 @@
 .button {
     background-color: #1ED760;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 36px;
     border: none;
     padding: 20px 60px;
-    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-size: clamp(1rem, 3vw, 1.25rem);
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -17,7 +17,7 @@
 
 .button:active {
     background-color: #1ED760;
-    transform: scale(0.98);
+    transform: scale(0.95);
 }
 
 .button:disabled {

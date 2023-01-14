@@ -1,3 +1,9 @@
-.container {
-    padding: 0 1em;
+.super-container {
+    background-color: #131313;
+    padding: 1em;
+    min-height: 100vh;
+}
+
+.tab-panel-container {
+    margin-top: 30px;
 }

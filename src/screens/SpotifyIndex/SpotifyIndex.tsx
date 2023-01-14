@@ -1,58 +1,36 @@
-import { useLoaderData } from "react-router-dom"
 import classes from "./SpotifyIndex.module.css"
-import { LoaderData } from "./SpotifyIndexLoader"
-import VerticalBarChart from "../../components/VerticalBarChart/VerticalBarChart"
-import { useMemo } from "react"
-import { ChartOptions } from "chart.js"
+import ByRegionsTab from "../../components/ByRegionsTab/ByRegionsTab"
+import { useState } from "react"
+import TabPanel from "../../components/TabPanel/TabPanel"
+import Tab from "../../components/Tab/Tab"
+import Tabs from "../../components/Tabs/Tabs"
 
 const SpotifyIndex = () => {
-    const { data } = useLoaderData() as LoaderData
-    const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
-    // Each region sorted by price in descending order and with additional attributes for the chart
-    const transformedData = useMemo(() => {
-        const regionsIterator = data.values()
-        const regions = []
-        for (let region of regionsIterator) {
-            const data = region.countries.sort((a, b) => b.convertedPrice - a.convertedPrice)
-            const options: ChartOptions = {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top' as const,
-                    },
-                    title: {
-                        display: true,
-                        text: `Spotify Price on ${region.name}`,
-                    },
-                    // fomatting the tooltip
-                    tooltip: {
-                        callbacks: {
-                            label: (context) => {
-                                return `${context.label}: ${formatter.format(context.parsed.y)}`
-                            }
-                        }
-                    }
-                },
-            }
+    const [tab, setTab] = useState(0)
 
-            regions.push({
-                name: region.name,
-                data: data.map(country => country.convertedPrice),
-                labels: data.map(country => country.internationalName),
-                backgroundColor: "#1ED760",
-                options
-            })
-        }
-        return regions
-    }, [data])
+    const handleOnChange = (newValue: number) => {
+        setTab(newValue)
+    }
 
     return (
-        <div className={classes.container}>
-            {transformedData.map(region => (
-                <VerticalBarChart key={region.name} data={{ labels: region.labels, datasets: [{ label: region.name, data: region.data, backgroundColor: region.backgroundColor }] }} options={region.options}></VerticalBarChart>
-            ))}
+        <div className={classes.superContainer}>
+            <Tabs tab={tab} onChange={handleOnChange}>
+                <Tab>By Regions</Tab>
+                <Tab>Region Average</Tab>
+                <Tab>All Regions</Tab>
+            </Tabs>
+            <div className={classes.tabPanelContainer}>
+                <TabPanel value={tab} index={0}>
+                    <ByRegionsTab />
+                </TabPanel>
+                <TabPanel value={tab} index={1}>
+                    <div>second tab</div>
+                </TabPanel>
+                <TabPanel value={tab} index={2}>
+                    <div>third</div>
+                </TabPanel>
+            </div>
         </div>
-
     )
 }
 

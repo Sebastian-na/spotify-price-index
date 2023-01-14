@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './CustomLink.css'
+import classes from './CustomLink.module.css'
 
 interface Props extends React.LinkHTMLAttributes<HTMLLinkElement> {
     children: React.ReactNode
@@ -9,7 +9,7 @@ interface Props extends React.LinkHTMLAttributes<HTMLLinkElement> {
 
 const CustomLink: React.FC<Props> = ({ children, to, ...props }) => {
     return (
-        <Link className='link' to={to}><span>{children}</span></Link>
+        <Link className={classes.link} to={to}><span>{children}</span></Link>
     )
 }
 

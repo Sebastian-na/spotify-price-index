@@ -1,5 +1,5 @@
 import React from 'react'
-import './Button.css'
+import classes from './Button.module.css'
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
@@ -7,7 +7,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button: React.FC<Props> = ({ children, ...props }) => {
   return (
-    <button className='button' {...props}>{children}</button>
+    <button className={classes.button} {...props}>{children}</button>
   )
 }
 
