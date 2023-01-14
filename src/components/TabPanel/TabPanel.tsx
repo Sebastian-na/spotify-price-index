@@ -9,7 +9,7 @@ interface Props {
 const TabPanel: React.FC<Props> = ({ value, index, children }) => {
     return (
         <div hidden={value !== index}>
-            {children}
+            {value === index && children}
         </div>
     )
 }
