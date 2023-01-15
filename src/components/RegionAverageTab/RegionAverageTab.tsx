@@ -21,7 +21,7 @@ const RegionAverageTab = () => {
         return arr.sort((a, b) => b[1] - a[1])
     }, [averages])
 
-    const options: ChartOptions = {
+    const options: ChartOptions<"bar"> = {
         plugins: {
             legend: {
                 position: 'top' as const,

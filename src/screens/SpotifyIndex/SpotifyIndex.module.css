@@ -1,5 +1,5 @@
 .super-container {
-    background-color: #131313;
+    background-color: var(--background-color);
     padding: 1em 4em;
     min-height: 100vh;
 }

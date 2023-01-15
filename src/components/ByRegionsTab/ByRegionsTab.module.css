@@ -17,13 +17,13 @@
     font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 0.5em;
-    color: #fff;
+    color: var(--heading-color)
 }
 
 .description {
     font-size: 1em;
     margin-bottom: 1em;
-    color: rgba(255, 255, 255, 0.678);
+    color: var(--body-color)
 }
 
 @media (max-width: 1024px) {

@@ -1,5 +1,5 @@
 .button {
-    background-color: #1ED760;
+    background-color: var(--spotify-green);
     color: #fff;
     border-radius: 36px;
     border: none;
@@ -8,15 +8,15 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    color: #131313;
+    color: var(--background-color)
 }
 
 .button:hover {
-    background-color: #1DB954;
+    background-color: var(--spotify-green-light)
 }
 
 .button:active {
-    background-color: #1ED760;
+    background-color: var(--spotify-green);
     transform: scale(0.95);
 }
 

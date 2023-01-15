@@ -4,13 +4,7 @@ import RegionData from '../../interfaces/RegionData'
 import { getSpotifyPriceIndexDividedByRegions } from '../../services/spotifyPriceIndex'
 import ScatterChart from '../ScatterChart/ScatterChart'
 import classes from './AllCountriesTab.module.css'
-
-const regionsColors = {
-    "Americas": "#E608EB",
-    "Europe": "#08B4EB",
-    "Asia": "#EBD408",
-    "Oceania": "#6C08EB",
-}
+import { regionsColors } from '../../consts/regionsColors'
 
 const AllRegionsTab = () => {
     const [data, setData] = useState<Map<string, RegionData>>()

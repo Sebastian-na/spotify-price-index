@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     gap: 32px;
-    background-color: #131313;
+    background-color: var(--background-color);
     padding: 0 1em;
 }
 
@@ -14,13 +14,13 @@
 }
 
 .container h1 {
-    color: #efefef;
+    color: var(--heading-color);
     font-size: clamp(2rem, 6vw, 3.75rem);
     font-weight: bold;
 }
 
 .container h2 {
-    color: #dddddd;
+    color: var(--sub-heading-color);
     font-size: clamp(1rem, 4vw, 1.25rem);
     font-weight: 400;
     text-align: center;

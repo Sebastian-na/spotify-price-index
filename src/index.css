@@ -10,6 +10,15 @@
   font: inherit;
 }
 
+:root {
+  --spotify-green: rgb(30, 215, 96);
+  --spotify-green-light: rgb(79 255 142);
+  --heading-color: #fff;
+  --sub-heading-color: #dddddd;
+  --body-color: rgba(255, 255, 255, 0.678);
+  --background-color: #131313;
+}
+
 body {
   min-height: 100vh;
   font-family: 'Inter', sans-serif;

@@ -4,13 +4,7 @@ import { getSpotifyPriceIndexDividedByRegions } from '../../services/spotifyPric
 import RegionData from '../../interfaces/RegionData'
 import { ChartOptions } from 'chart.js'
 import VerticalBarChart from '../VerticalBarChart/VerticalBarChart'
-
-const regionsColors = {
-    "Americas": "#E608EB",
-    "Europe": "#08B4EB",
-    "Asia": "#EBD408",
-    "Oceania": "#6C08EB",
-}
+import { regionsColors } from '../../consts/regionsColors'
 
 const ByRegionsTab = () => {
     const [data, setData] = useState<Map<string, RegionData>>()
@@ -27,7 +21,7 @@ const ByRegionsTab = () => {
         const regions = []
         for (let region of regionsIterator) {
             const data = region.countries.sort((a, b) => b.convertedPrice - a.convertedPrice)
-            const options: ChartOptions = {
+            const options: ChartOptions<"bar"> = {
                 plugins: {
                     legend: {
                         position: 'top' as const,
