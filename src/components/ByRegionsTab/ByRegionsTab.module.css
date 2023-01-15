@@ -8,11 +8,34 @@
 
 .chart-container {
     position: relative;
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+}
+
+.title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    color: #fff;
+}
+
+.description {
+    font-size: 1em;
+    margin-bottom: 1em;
+    color: rgba(255, 255, 255, 0.678);
 }
 
 @media (max-width: 1024px) {
     .charts-container {
         grid-template-columns: 1fr;
-        grid-template-rows: auto
+        grid-template-rows: auto;
+        padding: 0;
     }
+
+    .chart-container {
+        width: 100%;
+        padding: 0;
+    }
+
 }

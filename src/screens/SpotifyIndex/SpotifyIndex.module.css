@@ -1,9 +1,15 @@
 .super-container {
     background-color: #131313;
-    padding: 1em;
+    padding: 1em 4em;
     min-height: 100vh;
 }
 
 .tab-panel-container {
     margin-top: 30px;
+}
+
+@media (max-width: 500px) {
+    .super-container {
+        padding: 1em;
+    }
 }

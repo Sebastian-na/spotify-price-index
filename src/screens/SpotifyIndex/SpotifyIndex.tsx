@@ -4,6 +4,8 @@ import { useState } from "react"
 import TabPanel from "../../components/TabPanel/TabPanel"
 import Tab from "../../components/Tab/Tab"
 import Tabs from "../../components/Tabs/Tabs"
+import RegionAverageTab from "../../components/RegionAverageTab/RegionAverageTab"
+import AllCountriesTab from "../../components/AllCountriesTab/AllCountriesTab"
 
 const SpotifyIndex = () => {
     const [tab, setTab] = useState(0)
@@ -17,17 +19,17 @@ const SpotifyIndex = () => {
             <Tabs tab={tab} onChange={handleOnChange}>
                 <Tab>By Regions</Tab>
                 <Tab>Region Average</Tab>
-                <Tab>All Regions</Tab>
+                <Tab>All Countries</Tab>
             </Tabs>
             <div className={classes.tabPanelContainer}>
                 <TabPanel value={tab} index={0}>
                     <ByRegionsTab />
                 </TabPanel>
                 <TabPanel value={tab} index={1}>
-                    <div>second tab</div>
+                    <RegionAverageTab />
                 </TabPanel>
                 <TabPanel value={tab} index={2}>
-                    <div>third</div>
+                    <AllCountriesTab />
                 </TabPanel>
             </div>
         </div>

@@ -20,6 +20,15 @@ export const getSpotifyPriceIndexDividedByRegions = async (): Promise<Map<string
         }
         regions.get(country.region)!.countries.push(country)
     })
-
     return regions
+}
+
+export const getAverageSpotifyPriceByRegions = async (): Promise<Map<string, number>> => {
+    const data = await getSpotifyPriceIndexDividedByRegions()
+    const averages = new Map<string, number>()
+    data.forEach((region, key) => {
+        const sum = region.countries.reduce((acc, curr) => acc + curr.convertedPrice, 0)
+        averages.set(key, sum / region.countries.length)
+    })
+    return averages
 }

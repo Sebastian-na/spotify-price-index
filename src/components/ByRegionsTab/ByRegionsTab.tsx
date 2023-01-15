@@ -35,19 +35,17 @@ const ByRegionsTab = () => {
                     title: {
                         display: true,
                         text: `Spotify Price on ${region.name}`,
-
                     },
                     // fomatting the tooltip
                     tooltip: {
                         callbacks: {
                             label: (context) => {
-                                return `${context.label}: ${formatter.format(context.parsed.y)}`
+                                return `${formatter.format(context.parsed.y)}`
                             }
                         }
                     }
                 },
             }
-
             regions.push({
                 name: region.name,
                 data: data.map(country => country.convertedPrice),
@@ -60,7 +58,14 @@ const ByRegionsTab = () => {
     }, [data])
 
     return (
-        <div className={classes.sectionsContainer}>
+        <div>
+            <h2 className={classes.title}>Country prices by Region</h2>
+            <p className={classes.description}>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Facere architecto voluptatem maxime? Tenetur inventore earum
+                nostrum sequi vero. Accusantium eligendi mollitia voluptatem error,
+                ex facere expedita voluptatum fugiat quia doloribus.
+            </p>
             <div className={classes.chartsContainer}>
                 {transformedData.map(region => (
                     <div key={region.name} className={classes.chartContainer}>

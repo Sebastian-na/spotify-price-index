@@ -2,7 +2,7 @@ interface CountryData {
     countryCode: string
     currency: string
     demonym: string
-    gdp: number
+    gdp?: number
     internationalName: string
     price: number
     convertedPrice: number

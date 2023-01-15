@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <div className={classes.container}>
             <img src='https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg' />
-            <h1>Spotify Index Price</h1>
+            <h1>Spotify Price Index</h1>
             <h2>Compare Spotify subscription costs in different countries</h2>
             <Button onClick={() => navigate("/index")}>
                 Compare Prices Now
