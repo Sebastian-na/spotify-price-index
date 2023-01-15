@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { getAverageSpotifyPriceByRegions } from '../../services/spotifyPriceIndex'
 import VerticalBarChart from '../VerticalBarChart/VerticalBarChart'
 import classes from './RegionAverageTab.module.css'
+import { regionsColors } from '../../consts/regionsColors'
 
 const RegionAverageTab = () => {
     const [averages, setAverages] = useState<Map<string, number>>()
@@ -14,14 +15,22 @@ const RegionAverageTab = () => {
         })
     }, [])
 
-    const dataTransformed = useMemo(() => {
+    const transformedData = useMemo(() => {
         if (!averages) return []
-        const arr = Array.from(averages.entries())
+        const datasets = []
+        const arr = Array.from(averages.entries()).sort((a, b) => b[1] - a[1])
+        for (let [region, average] of arr) {
+            datasets.push({
+                label: region,
+                data: [average],
+                backgroundColor: (regionsColors as any)[region],
+            })
+        }
+        console.log(datasets)
         //sort by price in descending order
-        return arr.sort((a, b) => b[1] - a[1])
+        return datasets
     }, [averages])
 
-    let delayed: Boolean;
     const options: ChartOptions<"bar"> = {
         plugins: {
             legend: {
@@ -40,17 +49,24 @@ const RegionAverageTab = () => {
                 }
             },
         },
-        animation: {
-            onComplete: () => {
-                delayed = true
-            },
-            delay: (context) => {
-                let delay = 0;
-                if (context.type === 'data' && context.mode === 'default' && !delayed) {
-                    delay = context.dataIndex * 300 + context.datasetIndex * 100
+        scales: {
+            y: {
+                title: {
+                    text: "Price",
+                    display: true
+                },
+                ticks: {
+                    callback: (value) => {
+                        return formatter.format(value as number)
+                    }
                 }
-                return delay;
-            }
+            },
+            x: {
+                title: {
+                    text: "Region",
+                    display: true
+                },
+            },
         }
     }
 
@@ -69,12 +85,8 @@ const RegionAverageTab = () => {
             <div className={classes.chartContainer}>
                 <VerticalBarChart
                     data={{
-                        labels: dataTransformed.map(([region]) => region),
-                        datasets: [{
-                            label: 'Region Average',
-                            data: dataTransformed.map(([, average]) => average),
-                            backgroundColor: '#1ED760',
-                        }]
+                        labels: [''],
+                        datasets: transformedData
                     }}
                     options={options} />
             </div>

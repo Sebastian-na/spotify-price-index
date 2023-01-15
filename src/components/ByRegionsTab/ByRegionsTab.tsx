@@ -40,6 +40,19 @@ const ByRegionsTab = () => {
                         }
                     }
                 },
+                scales: {
+                    y: {
+                        title: {
+                            text: "Price",
+                            display: true
+                        },
+                        ticks: {
+                            callback: (value) => {
+                                return formatter.format(value as number)
+                            }
+                        }
+                    },
+                }
             }
             regions.push({
                 name: region.name,

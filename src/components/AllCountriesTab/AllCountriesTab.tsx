@@ -1,4 +1,4 @@
-import { ChartOptions, scales } from 'chart.js'
+import { ChartOptions } from 'chart.js'
 import { useEffect, useMemo, useState } from 'react'
 import RegionData from '../../interfaces/RegionData'
 import { getSpotifyPriceIndexDividedByRegions } from '../../services/spotifyPriceIndex'
@@ -47,7 +47,7 @@ const AllRegionsTab = () => {
             },
             title: {
                 display: true,
-                text: `Spotify Price on All Regions`,
+                text: `Spotify Price on All Countries`,
             },
 
             // fomatting the tooltip
@@ -95,7 +95,8 @@ const AllRegionsTab = () => {
         elements: {
             point: {
                 radius: 3,
-                hoverRadius: 8
+                hoverRadius: 8,
+                hitRadius: 6
             }
         },
     }
@@ -103,7 +104,7 @@ const AllRegionsTab = () => {
 
     return (
         <div>
-            <h2 className={classes.title}>All Regions</h2>
+            <h2 className={classes.title}>All Countries</h2>
             <p className={classes.description}>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Facere architecto voluptatem maxime? Tenetur inventore earum

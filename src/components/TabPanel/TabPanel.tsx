@@ -1,4 +1,5 @@
 import React from 'react'
+import classes from './TabPanel.module.css'
 
 interface Props {
     children: React.ReactNode
@@ -8,7 +9,7 @@ interface Props {
 
 const TabPanel: React.FC<Props> = ({ value, index, children }) => {
     return (
-        <div hidden={value !== index}>
+        <div className={`${classes.tabPanel} ${value == index ? classes.selected : ''}`} >
             {value === index && children}
         </div>
     )

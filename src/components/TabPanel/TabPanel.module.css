@@ -1,0 +1,8 @@
+.tab-panel {
+    transition: all 1s ease;
+    opacity: 0;
+}
+
+.selected {
+    opacity: 1
+}
