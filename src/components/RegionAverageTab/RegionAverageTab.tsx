@@ -1,7 +1,7 @@
 import { ChartOptions } from 'chart.js'
 import { useEffect, useMemo, useState } from 'react'
 import { getAverageSpotifyPriceByRegions } from '../../services/spotifyPriceIndex'
-import VerticalBarChart from '../VerticalBarChart/VerticalBarChart'
+import VerticalBarChart from '../VerticalBarChart'
 import classes from './RegionAverageTab.module.css'
 import { regionsColors } from '../../consts/regionsColors'
 

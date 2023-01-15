@@ -1,5 +1,5 @@
 import React, { BaseSyntheticEvent, useEffect } from 'react'
-import Tab from '../Tab/Tab'
+import Tab from '../Tab'
 import classes from './Tabs.module.css'
 
 interface Props {

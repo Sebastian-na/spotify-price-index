@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { getSpotifyPriceIndexDividedByRegions } from '../../services/spotifyPriceIndex'
 import RegionData from '../../interfaces/RegionData'
 import { ChartOptions } from 'chart.js'
-import VerticalBarChart from '../VerticalBarChart/VerticalBarChart'
+import VerticalBarChart from '../VerticalBarChart'
 import { regionsColors } from '../../consts/regionsColors'
 
 const ByRegionsTab = () => {

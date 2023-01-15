@@ -2,11 +2,11 @@ import { ChartOptions } from 'chart.js'
 import { useEffect, useMemo, useState } from 'react'
 import RegionData from '../../interfaces/RegionData'
 import { getSpotifyPriceIndexDividedByRegions } from '../../services/spotifyPriceIndex'
-import ScatterChart from '../ScatterChart/ScatterChart'
+import ScatterChart from '../ScatterChart'
 import classes from './AllCountriesTab.module.css'
 import { regionsColors } from '../../consts/regionsColors'
 
-const AllRegionsTab = () => {
+const AllCountriesTab = () => {
     const [data, setData] = useState<Map<string, RegionData>>()
     const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
 
@@ -124,4 +124,4 @@ const AllRegionsTab = () => {
     )
 }
 
-export default AllRegionsTab
+export default AllCountriesTab
