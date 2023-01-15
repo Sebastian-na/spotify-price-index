@@ -40,7 +40,7 @@ const AllRegionsTab = () => {
 
     }, [data])
 
-    const options: ChartOptions = {
+    const options: ChartOptions<"scatter"> = {
         plugins: {
             legend: {
                 position: 'top' as const,
@@ -73,19 +73,29 @@ const AllRegionsTab = () => {
                 title: {
                     text: "Price",
                     display: true
+                },
+                ticks: {
+                    callback: (value) => {
+                        return formatter.format(value as number)
+                    }
                 }
             },
             x: {
                 title: {
                     text: "GDP",
                     display: true
+                },
+                ticks: {
+                    callback: (value) => {
+                        return formatter.format(value as number)
+                    }
                 }
             }
         },
         elements: {
             point: {
-                radius: 5,
-                hoverRadius: 3
+                radius: 3,
+                hoverRadius: 8
             }
         },
     }

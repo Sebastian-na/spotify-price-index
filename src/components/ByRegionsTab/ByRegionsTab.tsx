@@ -21,6 +21,7 @@ const ByRegionsTab = () => {
         const regions = []
         for (let region of regionsIterator) {
             const data = region.countries.sort((a, b) => b.convertedPrice - a.convertedPrice)
+
             const options: ChartOptions<"bar"> = {
                 plugins: {
                     legend: {

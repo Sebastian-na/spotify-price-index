@@ -21,6 +21,7 @@ const RegionAverageTab = () => {
         return arr.sort((a, b) => b[1] - a[1])
     }, [averages])
 
+    let delayed: Boolean;
     const options: ChartOptions<"bar"> = {
         plugins: {
             legend: {
@@ -37,8 +38,20 @@ const RegionAverageTab = () => {
                         return `${formatter.format(context.parsed.y)}`
                     }
                 }
-            }
+            },
         },
+        animation: {
+            onComplete: () => {
+                delayed = true
+            },
+            delay: (context) => {
+                let delay = 0;
+                if (context.type === 'data' && context.mode === 'default' && !delayed) {
+                    delay = context.dataIndex * 300 + context.datasetIndex * 100
+                }
+                return delay;
+            }
+        }
     }
 
     return (
