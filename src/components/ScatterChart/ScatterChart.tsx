@@ -15,7 +15,7 @@ ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
 interface Props {
     data: ChartData<"scatter", (number | Point | null)[], unknown>
-    options: ChartOptions
+    options: ChartOptions<"scatter">
 }
 
 const ScatterChart: React.FC<Props> = ({ data, options }) => {

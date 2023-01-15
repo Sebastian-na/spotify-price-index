@@ -22,7 +22,7 @@ ChartJS.register(
 
 interface VerticalBarChartProps {
     data: ChartData<"bar", (number | [number, number] | null)[], unknown>
-    options?: ChartOptions
+    options?: ChartOptions<"bar">
 }
 
 const VerticalBarChart: React.FC<VerticalBarChartProps> = ({ data, options }) => {
