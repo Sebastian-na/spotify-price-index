@@ -1,9 +1,9 @@
-import { ChartOptions } from 'chart.js'
 import { useEffect, useMemo, useState } from 'react'
 import { getAverageSpotifyPriceByRegions } from '../../services/spotifyPriceIndex'
 import VerticalBarChart from '../VerticalBarChart'
 import classes from './RegionAverageTab.module.css'
 import { regionsColors } from '../../consts/regionsColors'
+import Typography from '../Typography/Typography'
 
 const RegionAverageTab = () => {
     const [averages, setAverages] = useState<Map<string, number>>()
@@ -26,54 +26,14 @@ const RegionAverageTab = () => {
                 backgroundColor: (regionsColors as any)[region],
             })
         }
-        console.log(datasets)
         //sort by price in descending order
         return datasets
     }, [averages])
 
-    const options: ChartOptions<"bar"> = {
-        plugins: {
-            legend: {
-                position: 'top' as const,
-            },
-            title: {
-                text: 'Average Spotify Price by Region',
-                display: true,
-            },
-            // fomatting the tooltip
-            tooltip: {
-                callbacks: {
-                    label: (context) => {
-                        return `${formatter.format(context.parsed.y)}`
-                    }
-                }
-            },
-        },
-        scales: {
-            y: {
-                title: {
-                    text: "Price",
-                    display: true
-                },
-                ticks: {
-                    callback: (value) => {
-                        return formatter.format(value as number)
-                    }
-                }
-            },
-            x: {
-                title: {
-                    text: "Region",
-                    display: true
-                },
-            },
-        }
-    }
-
     return (
         <div>
-            <h2 className={classes.title}>Region Average</h2>
-            <p className={classes.description}>
+            <Typography component='h2' variant='h3' animated>Region Average</Typography>
+            <Typography variant='body1' mt={20} animated >
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Facere architecto voluptatem maxime? Tenetur inventore earum
                 nostrum sequi vero. Accusantium eligendi mollitia voluptatem error,
@@ -81,14 +41,23 @@ const RegionAverageTab = () => {
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Facere architecto voluptatem maxime? Tenetur inventore earum
                 nostrum sequi vero. Accusantium eligendi mollitia voluptatem error,
-                ex facere expedita voluptatum fugiat quia doloribus.</p>
+                ex facere expedita voluptatum fugiat quia doloribus.</Typography>
             <div className={classes.chartContainer}>
                 <VerticalBarChart
                     data={{
                         labels: [''],
                         datasets: transformedData
                     }}
-                    options={options} />
+                    tooltipLabelCallback={(context) => {
+                        return `${formatter.format(context.parsed.y)}`
+                    }}
+                    tooltipTitleCallback={(tooltipItems) => {
+                        return tooltipItems[0].dataset.label!
+                    }}
+                    yLabel='Price'
+                    xLabel='Region'
+                    title='Average Spotify Price in each Region'
+                />
             </div>
         </div>
     )

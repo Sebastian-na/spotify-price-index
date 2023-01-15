@@ -5,6 +5,7 @@ import { getSpotifyPriceIndexDividedByRegions } from '../../services/spotifyPric
 import ScatterChart from '../ScatterChart'
 import classes from './AllCountriesTab.module.css'
 import { regionsColors } from '../../consts/regionsColors'
+import Typography from '../Typography/Typography'
 
 const AllCountriesTab = () => {
     const [data, setData] = useState<Map<string, RegionData>>()
@@ -104,15 +105,15 @@ const AllCountriesTab = () => {
 
     return (
         <div>
-            <h2 className={classes.title}>All Countries</h2>
-            <p className={classes.description}>
+            <Typography component='h2' variant='h3' animated>All Countries</Typography>
+            <Typography variant='body1' animated mt={20}>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Facere architecto voluptatem maxime? Tenetur inventore earum
                 nostrum sequi vero. Accusantium eligendi mollitia voluptatem error,
                 ex facere expedita voluptatum fugiat quia doloribus.
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Facere architecto voluptatem maxime? Tenetur inventore earum
-            </p>
+            </Typography>
             <div className={classes.chartContainer}>
                 <ScatterChart
                     data={{

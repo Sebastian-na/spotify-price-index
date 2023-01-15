@@ -14,7 +14,7 @@ import { Scatter } from 'react-chartjs-2';
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
 interface Props {
-    data: ChartData<"scatter", (number | Point | null)[], unknown>
+    data: ChartData<"scatter">
     options: ChartOptions<"scatter">
 }
 
