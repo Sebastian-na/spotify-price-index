@@ -60,6 +60,9 @@ const AllCountriesTab = () => {
                     yLabel='Price'
                     xTicksCallback={ticksCallback}
                     yTicksCallback={ticksCallback}
+                    pointRadius={2}
+                    pointHoverRadius={7}
+                    pointHitRadius={2}
                 />
             </div>
         </div >

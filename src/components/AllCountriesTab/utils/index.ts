@@ -32,7 +32,7 @@ const getOrCreateTooltip = (chart: Chart<"scatter">) => {
         const table = document.createElement('table');
         table.style.margin = '0px';
         table.style.borderSpacing = '10px'
-
+        table.style.fontSize = '12px'
         tooltipEl.appendChild(table);
         chart.canvas.parentNode!.appendChild(tooltipEl);
     }
