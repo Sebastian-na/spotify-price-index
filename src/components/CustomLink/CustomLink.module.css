@@ -2,3 +2,7 @@
     text-decoration: none;
     color: var(--spotify-green)
 }
+
+.link:hover {
+    text-decoration: underline;
+}

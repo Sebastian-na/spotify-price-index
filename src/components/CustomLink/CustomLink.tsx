@@ -4,12 +4,16 @@ import classes from './CustomLink.module.css'
 
 interface Props extends React.LinkHTMLAttributes<HTMLLinkElement> {
     children: React.ReactNode
+    external?: boolean
     to: string
 }
 
-const CustomLink: React.FC<Props> = ({ children, to, ...props }) => {
+const CustomLink: React.FC<Props> = ({ children, to, external = false }) => {
     return (
-        <Link className={classes.link} to={to}><span>{children}</span></Link>
+        external ?
+            <a className={classes.link} href={to} target="_blank">{children}</a>
+            :
+            <Link className={classes.link} to={to}><span>{children}</span></Link>
     )
 }
 

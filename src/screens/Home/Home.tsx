@@ -4,6 +4,7 @@ import classes from "./Home.module.css"
 import { motion } from "framer-motion"
 import { fadeInOut } from "../../consts/fadeInOutAnimation"
 import Typography from "../../components/Typography/Typography"
+import CustomLink from "../../components/CustomLink"
 
 const Home = () => {
 
@@ -18,6 +19,11 @@ const Home = () => {
                 <Button onClick={() => navigate("/index")}>
                     Compare Prices Now
                 </Button>
+            </div>
+            <div className={classes.acknowledgement}>
+                <Typography variant='body2' animated center size="clamp(0.75rem, 2vw, 1rem)">
+                    Data provided by <CustomLink to="https://github.com/matiassingers" external>Matias Singers</CustomLink>
+                </Typography>
             </div>
         </motion.div>
     )

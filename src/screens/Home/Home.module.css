@@ -10,5 +10,11 @@
 }
 
 .container img {
-    width: clamp(200px, 25vw, 340px);
+    width: clamp(200px, 20vw, 340px);
+}
+
+.acknowledgement {
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
