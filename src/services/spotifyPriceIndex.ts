@@ -18,7 +18,11 @@ export const getSpotifyPriceIndexDividedByRegions = async (): Promise<Map<string
                 countries: []
             })
         }
-        regions.get(country.region)!.countries.push(country)
+        const arr = regions.get(country.region)!
+        // In the data there are some countries repeated, so we need to check if the country is already in the array
+        if (!arr.countries.some(c => c.internationalName === country.internationalName)) {
+            arr.countries.push(country)
+        }
     })
     return regions
 }
