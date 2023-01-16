@@ -48,9 +48,11 @@ const AllCountriesTab = () => {
     }
 
     const tooltipTitleCallback = (tooltipItems: TooltipItem<"scatter">[]) => {
-        const country = (tooltipItems[0].raw as any).country as string
-        const region = tooltipItems[0].dataset.label
-        return `${country} (${region})`
+        return tooltipItems.map(item => {
+            const country = (item.raw as any).country as string
+            const region = item.dataset.label
+            return `${country} (${region})`
+        }).join(", ")
     }
 
     const ticksCallback = (tickValue: number | string) => {
