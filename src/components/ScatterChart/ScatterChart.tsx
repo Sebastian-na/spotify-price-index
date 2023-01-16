@@ -35,6 +35,7 @@ const ScatterChart: React.FC<Props> = ({
     yTicksCallback, xTicksCallback,
     pointRadius = 3, pointHoverRadius = 5, pointHitRadius = 5 }) => {
     const options: ChartOptions<"scatter"> = {
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 position: 'top' as const,
