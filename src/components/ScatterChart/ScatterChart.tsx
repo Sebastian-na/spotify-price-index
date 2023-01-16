@@ -22,6 +22,7 @@ interface Props {
     yLabel?: string
     tooltipTitleCallback?: (tooltipItems: TooltipItem<"scatter">[]) => string
     tooltipLabelCallback?: (context: TooltipItem<"scatter">) => string
+    externalTooltipHandler?: (context: { chart: ChartJS<"scatter">, tooltip: TooltipModel<"scatter"> }) => void
     yTicksCallback?: (tickValue: number | string, index: number, ticks: Tick[]) => string
     xTicksCallback?: (tickValue: number | string, index: number, ticks: Tick[]) => string
     pointRadius?: number
@@ -32,7 +33,7 @@ interface Props {
 const ScatterChart: React.FC<Props> = ({
     data, title, xLabel, yLabel,
     tooltipLabelCallback, tooltipTitleCallback,
-    yTicksCallback, xTicksCallback,
+    yTicksCallback, xTicksCallback, externalTooltipHandler,
     pointRadius = 3, pointHoverRadius = 5, pointHitRadius = 5 }) => {
     const options: ChartOptions<"scatter"> = {
         maintainAspectRatio: false,
@@ -47,9 +48,11 @@ const ScatterChart: React.FC<Props> = ({
 
             // fomatting the tooltip
             tooltip: {
+                external: externalTooltipHandler,
+                enabled: externalTooltipHandler ? false : true,
                 callbacks: {
                     label: tooltipLabelCallback,
-                    title: tooltipTitleCallback
+                    title: tooltipTitleCallback,
                 },
 
             }
