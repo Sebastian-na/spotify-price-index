@@ -45,14 +45,10 @@ const RegionAverageTab = () => {
         <div>
             <Typography component='h2' variant='h3' animated>Region Average</Typography>
             <Typography variant='body1' mt={20} animated >
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Facere architecto voluptatem maxime? Tenetur inventore earum
-                nostrum sequi vero. Accusantium eligendi mollitia voluptatem error,
-                ex facere expedita voluptatum fugiat quia doloribus.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Facere architecto voluptatem maxime? Tenetur inventore earum
-                nostrum sequi vero. Accusantium eligendi mollitia voluptatem error,
-                ex facere expedita voluptatum fugiat quia doloribus.</Typography>
+                This chart shows the average price of Spotify Premium in each region.
+                Note that the price in Asia and Americas is more than twice lower than the price in Europe.
+                Hover over the bars to see the average price in each region.
+            </Typography>
             <div className={classes.chartContainer}>
                 <VerticalBarChart
                     data={{

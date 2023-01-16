@@ -64,12 +64,10 @@ const AllCountriesTab = () => {
         <div>
             <Typography component='h2' variant='h3' animated>All Countries</Typography>
             <Typography variant='body1' animated mt={20}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Facere architecto voluptatem maxime? Tenetur inventore earum
-                nostrum sequi vero. Accusantium eligendi mollitia voluptatem error,
-                ex facere expedita voluptatum fugiat quia doloribus.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Facere architecto voluptatem maxime? Tenetur inventore earum
+                This section shows the price of Spotify in all countries in the world
+                and the GDP of each country. In the scatter chart, the x-axis is the GDP,
+                and the y-axis is the price. The color of each point is the region of the country.
+                Hover over the point to see the country name, region, price, and GDP.
             </Typography>
             <div className={classes.chartContainer}>
                 <ScatterChart

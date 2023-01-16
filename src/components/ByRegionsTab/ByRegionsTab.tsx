@@ -46,10 +46,8 @@ const ByRegionsTab = () => {
         <div>
             <Typography component='h2' variant='h3' animated>By Regions</Typography>
             <Typography variant='body1' animated mt={20}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Facere architecto voluptatem maxime? Tenetur inventore earum
-                nostrum sequi vero. Accusantium eligendi mollitia voluptatem error,
-                ex facere expedita voluptatum fugiat quia doloribus.
+                This section shows the price of Spotify in each region sorted by price in descending order.
+                Hover over the bars to see the price and the country.
             </Typography>
             <div className={classes.chartsContainer}>
                 {transformedData.map(region => (
