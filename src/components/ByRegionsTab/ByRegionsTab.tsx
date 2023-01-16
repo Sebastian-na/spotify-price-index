@@ -5,6 +5,7 @@ import RegionData from '../../interfaces/RegionData'
 import VerticalBarChart from '../VerticalBarChart'
 import { regionsColors } from '../../consts/regionsColors'
 import Typography from '../Typography/Typography'
+import { TooltipItem } from 'chart.js'
 
 const ByRegionsTab = () => {
     const [data, setData] = useState<Map<string, RegionData>>()
@@ -31,6 +32,16 @@ const ByRegionsTab = () => {
         return regions
     }, [data])
 
+    const tooltipLabelCallback = (context: TooltipItem<"bar">) => {
+        const price = context.parsed.y
+        return `${formatter.format(price)}`
+    }
+
+    const ticksCallback = (value: string | number) => {
+        return formatter.format(value as number)
+    }
+
+
     return (
         <div>
             <Typography component='h2' variant='h3' animated>By Regions</Typography>
@@ -53,12 +64,8 @@ const ByRegionsTab = () => {
                             title={`Spotify Price on ${region.name}`}
                             xLabel='Country'
                             yLabel='Price'
-                            tooltipLabelCallback={(context) => {
-                                return `${formatter.format(context.parsed.y)}`
-                            }}
-                            yTicksCallback={(value) => {
-                                return formatter.format(value as number)
-                            }}
+                            tooltipLabelCallback={tooltipLabelCallback}
+                            yTicksCallback={ticksCallback}
                         />
                     </div>
                 ))}

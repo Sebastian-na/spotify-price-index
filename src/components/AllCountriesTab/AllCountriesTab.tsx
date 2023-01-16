@@ -1,4 +1,4 @@
-import { ChartOptions } from 'chart.js'
+import { TooltipItem } from 'chart.js'
 import { useEffect, useMemo, useState } from 'react'
 import RegionData from '../../interfaces/RegionData'
 import { getSpotifyPriceIndexDividedByRegions } from '../../services/spotifyPriceIndex'
@@ -41,65 +41,20 @@ const AllCountriesTab = () => {
 
     }, [data])
 
-    const options: ChartOptions<"scatter"> = {
-        plugins: {
-            legend: {
-                position: 'top' as const,
-            },
-            title: {
-                display: true,
-                text: `Spotify Price on All Countries`,
-            },
+    const tooltipLabelCallback = (context: TooltipItem<"scatter">) => {
+        const gdp = context.parsed.x
+        const price = context.parsed.y
+        return `Price: ${formatter.format(price)} GDP: ${formatter.format(gdp)}`
+    }
 
-            // fomatting the tooltip
-            tooltip: {
-                callbacks: {
-                    label: (context) => {
-                        const gdp = context.parsed.x
-                        const price = context.parsed.y
+    const tooltipTitleCallback = (tooltipItems: TooltipItem<"scatter">[]) => {
+        const country = (tooltipItems[0].raw as any).country as string
+        const region = tooltipItems[0].dataset.label
+        return `${country} (${region})`
+    }
 
-                        return `Price: ${formatter.format(price)} GDP: ${formatter.format(gdp)}`
-                    },
-                    title: (context) => {
-                        const country = (context[0].raw as any).country as string
-                        const region = context[0].dataset.label
-                        return `${country} (${region})`
-                    }
-                },
-
-            }
-        },
-        scales: {
-            y: {
-                title: {
-                    text: "Price",
-                    display: true
-                },
-                ticks: {
-                    callback: (value) => {
-                        return formatter.format(value as number)
-                    }
-                }
-            },
-            x: {
-                title: {
-                    text: "GDP",
-                    display: true
-                },
-                ticks: {
-                    callback: (value) => {
-                        return formatter.format(value as number)
-                    }
-                }
-            }
-        },
-        elements: {
-            point: {
-                radius: 3,
-                hoverRadius: 8,
-                hitRadius: 6
-            }
-        },
+    const ticksCallback = (tickValue: number | string) => {
+        return formatter.format(tickValue as number)
     }
 
 
@@ -119,7 +74,14 @@ const AllCountriesTab = () => {
                     data={{
                         datasets: transformedData
                     }}
-                    options={options} />
+                    title='Spotify Price on All Countries'
+                    tooltipLabelCallback={tooltipLabelCallback}
+                    tooltipTitleCallback={tooltipTitleCallback}
+                    xLabel='GDP'
+                    yLabel='Price'
+                    xTicksCallback={ticksCallback}
+                    yTicksCallback={ticksCallback}
+                />
             </div>
         </div >
     )

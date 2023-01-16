@@ -4,6 +4,7 @@ import VerticalBarChart from '../VerticalBarChart'
 import classes from './RegionAverageTab.module.css'
 import { regionsColors } from '../../consts/regionsColors'
 import Typography from '../Typography/Typography'
+import { TooltipItem } from 'chart.js'
 
 const RegionAverageTab = () => {
     const [averages, setAverages] = useState<Map<string, number>>()
@@ -30,6 +31,16 @@ const RegionAverageTab = () => {
         return datasets
     }, [averages])
 
+    const tooltipLabelCallback = (context: TooltipItem<"bar">) => {
+        const price = context.parsed.y
+        return `${formatter.format(price)}`
+    }
+
+    const tooltipTitleCallback = (tooltipItems: TooltipItem<"bar">[]) => {
+        const region = tooltipItems[0].dataset.label!
+        return region
+    }
+
     return (
         <div>
             <Typography component='h2' variant='h3' animated>Region Average</Typography>
@@ -48,12 +59,8 @@ const RegionAverageTab = () => {
                         labels: [''],
                         datasets: transformedData
                     }}
-                    tooltipLabelCallback={(context) => {
-                        return `${formatter.format(context.parsed.y)}`
-                    }}
-                    tooltipTitleCallback={(tooltipItems) => {
-                        return tooltipItems[0].dataset.label!
-                    }}
+                    tooltipLabelCallback={tooltipLabelCallback}
+                    tooltipTitleCallback={tooltipTitleCallback}
                     yLabel='Price'
                     xLabel='Region'
                     title='Average Spotify Price in each Region'
