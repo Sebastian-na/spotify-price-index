@@ -35,6 +35,7 @@ interface VerticalBarChartProps {
 
 const VerticalBarChart: React.FC<VerticalBarChartProps> = ({ data, title, xLabel, yLabel, yTicksCallback, xTicksCallback, tooltipLabelCallback, tooltipTitleCallback }) => {
     const options: ChartOptions<"bar"> = {
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 position: 'top' as const,
