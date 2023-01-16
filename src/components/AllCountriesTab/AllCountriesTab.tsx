@@ -6,9 +6,11 @@ import classes from './AllCountriesTab.module.css'
 import { regionsColors } from '../../consts/regionsColors'
 import Typography from '../Typography/Typography'
 import { externalTooltipHandler, ticksCallback } from './utils'
+import useDeviceDetect from '../../hooks/useDeviceDetect'
 
 const AllCountriesTab = () => {
     const [data, setData] = useState<Map<string, RegionData>>()
+    const { isMobile } = useDeviceDetect()
 
     useEffect(() => {
         getSpotifyPriceIndexDividedByRegions().then(data => setData(data))
@@ -62,7 +64,7 @@ const AllCountriesTab = () => {
                     yTicksCallback={ticksCallback}
                     pointRadius={2}
                     pointHoverRadius={7}
-                    pointHitRadius={2}
+                    pointHitRadius={isMobile ? 7 : 3}
                 />
             </div>
         </div >
