@@ -1,2 +1,2 @@
-import SpotifyIndex from "./SpotifyIndex"
+import SpotifyIndex from './SpotifyIndex'
 export default SpotifyIndex

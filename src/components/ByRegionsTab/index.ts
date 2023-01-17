@@ -1,2 +1,2 @@
-import ByRegionsTab from "./ByRegionsTab"
+import ByRegionsTab from './ByRegionsTab'
 export default ByRegionsTab

@@ -8,41 +8,42 @@ import Typography from '../Typography/Typography'
 import { externalTooltipHandler, ticksCallback } from './utils'
 import useDeviceDetect from '../../hooks/useDeviceDetect'
 
-const AllCountriesTab = () => {
-    const [data, setData] = useState<Map<string, RegionData>>()
-    const { isMobile } = useDeviceDetect()
+const AllCountriesTab: React.FC = () => {
+  const [data, setData] = useState<Map<string, RegionData>>()
+  const { isMobile } = useDeviceDetect()
 
-    useEffect(() => {
-        getSpotifyPriceIndexDividedByRegions().then(data => setData(data))
-    }, [])
+  useEffect(() => {
+    getSpotifyPriceIndexDividedByRegions()
+      .then(data => { setData(data) })
+      .catch(err => { console.error(err) })
+  }, [])
 
-    const transformedData = useMemo(() => {
-        if (!data) return []
-        const datasets: Array<{ label: string, data: Array<{ x: number, y: number, country: string }>, backgroundColor: string }> = []
-        const regionsIterator = data.values()
-        for (let region of regionsIterator) {
-            const data = []
-            for (let country of region.countries) {
-                if (!country.gdp) {
-                    continue
-                }
-                data.push({
-                    x: country.gdp,
-                    y: country.convertedPrice,
-                    country: country.internationalName
-                })
-            }
-            datasets.push({
-                label: region.name,
-                data,
-                backgroundColor: (regionsColors as any)[region.name],
-            })
+  const transformedData = useMemo(() => {
+    if (data == null) return []
+    const datasets: Array<{ label: string, data: Array<{ x: number, y: number, country: string }>, backgroundColor: string }> = []
+    const regionsIterator = data.values()
+    for (const region of regionsIterator) {
+      const data = []
+      for (const country of region.countries) {
+        if (country.gdp === undefined) {
+          continue
         }
-        return datasets
+        data.push({
+          x: country.gdp,
+          y: country.convertedPrice,
+          country: country.internationalName
+        })
+      }
+      datasets.push({
+        label: region.name,
+        data,
+        backgroundColor: (regionsColors as any)[region.name]
+      })
+    }
+    return datasets
+  }, [data])
 
-    }, [data])
-
-    return (
+  return (
         <div>
             <Typography component='h2' variant='h3' animated>All Countries</Typography>
             <Typography variant='body1' animated mt={20}>
@@ -54,7 +55,7 @@ const AllCountriesTab = () => {
             <div className={classes.chartContainer}>
                 <ScatterChart
                     data={{
-                        datasets: transformedData
+                      datasets: transformedData
                     }}
                     title='Spotify Price on All Countries'
                     externalTooltipHandler={externalTooltipHandler}
@@ -68,7 +69,7 @@ const AllCountriesTab = () => {
                 />
             </div>
         </div >
-    )
+  )
 }
 
 export default AllCountriesTab

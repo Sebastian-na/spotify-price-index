@@ -2,13 +2,13 @@ import React from 'react'
 import classes from './Tab.module.css'
 
 interface Props {
-    children: string
+  children: string
 }
 
 const Tab: React.FC<Props> = ({ children }) => {
-    return (
+  return (
         <div className={classes.tab}>{children}</div>
-    )
+  )
 }
 
 export default Tab

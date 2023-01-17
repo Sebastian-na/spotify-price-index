@@ -1,2 +1,2 @@
-import AllCountriesTab from "./AllCountriesTab"
+import AllCountriesTab from './AllCountriesTab'
 export default AllCountriesTab

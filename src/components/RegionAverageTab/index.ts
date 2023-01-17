@@ -1,2 +1,2 @@
-import RegionAverageTab from "./RegionAverageTab"
+import RegionAverageTab from './RegionAverageTab'
 export default RegionAverageTab

@@ -1,2 +1,2 @@
-import ScatterChart from "./ScatterChart"
+import ScatterChart from './ScatterChart'
 export default ScatterChart
